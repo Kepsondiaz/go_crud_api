@@ -1,0 +1,8 @@
+package initializer  
+
+
+
+func LoadEnvVariable() {
+
+}
+

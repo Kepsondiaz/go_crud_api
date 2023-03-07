@@ -1,0 +1,24 @@
+package main
+
+import (
+	"go_api_crud/initializer"
+
+
+	"go_api_crud/controllers"
+
+)
+
+func init() {
+
+	initializer.LoadEnvVariable()
+	initializer.ConnectToDB()
+	
+}
+
+func main() {
+	r := gin.Default()
+
+	r.GET("/posts" , controllers.createPosts)
+
+	r.Run()
+}

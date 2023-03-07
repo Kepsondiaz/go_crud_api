@@ -1,0 +1,6 @@
+import initializer 
+
+func LoadEnvVariable() {
+	
+}
+
