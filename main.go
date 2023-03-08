@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"go_api_crud/controllers"
-
 )
 
 func init() {
@@ -20,6 +19,8 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/posts" , controllers.CreatePosts)
+	r.GET("/posts" , controllers.ShowPosts)
+
 
 	r.Run()
 }

@@ -7,10 +7,16 @@ import (
 	"go_api_crud/models"
 )
 
+// create the the posts
 func CreatePosts(c *gin.Context) {
 
+	var bodyPost struct {
+		Title string
+		Content string
+	}
+	c.Bind(&bodyPost)
 	// create data 
-	posts := models.Posts{Title: "Saint Valentin", Content: "le mois de l'amour"}
+	posts := models.Posts{Title: bodyPost.Title, Content: bodyPost.Content}
 
 	result := initializer.DB.Create(&posts)
 
@@ -23,3 +29,23 @@ func CreatePosts(c *gin.Context) {
 		"posts": posts,
 	})
 }
+
+// show the posts
+func ShowPosts(c *gin.Context) {
+ 	var posts []models.Posts
+ 	initializer.DB.Find(&posts)
+
+	 c.JSON(200, gin.H{
+		"posts": posts,
+	})
+
+ }
+
+//update the posts 
+// func UpdatePosts(c *gin.Context) {
+// 	initializer.DB.Where("id = ?", 1).Update("Title", "hello")
+
+// 	c.JSON(200, gin.H{
+// 		"posts": posts,
+// 	})
+// }
